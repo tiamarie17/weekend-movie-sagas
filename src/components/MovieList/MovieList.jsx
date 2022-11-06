@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './MovieList.css'
 import {useHistory} from 'react-router-dom';
+import Details from '../Details/Details';
 
 
 function MovieList() {
@@ -29,6 +30,7 @@ function MovieList() {
     }
 
     return (
+        <>
         <main>
             <h1>MovieList</h1>
             <section className="movies">
@@ -44,8 +46,8 @@ function MovieList() {
                     );
                 })}
             </section>
-            <button>Back to Movie List</button>
         </main>
+        </>
 
     );
 }
