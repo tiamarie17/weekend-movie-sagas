@@ -2,7 +2,6 @@ import React, { useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './MovieList.css'
 import {useHistory} from 'react-router-dom';
-import Details from '../Details/Details';
 
 
 function MovieList() {
@@ -26,6 +25,8 @@ function MovieList() {
 
 
         history.push(`/details/${movie.id}`);
+        dispatch({ type: 'FETCH__MOVIE_DETAILS' });
+
 
     }
 

@@ -15,7 +15,7 @@ import axios from 'axios';
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
     yield takeEvery('FETCH_GENRES', fetchGenres);
-    yield takeEvery('FETCH_DETAILS', fetchMovieDetails);
+    yield takeEvery('FETCH__MOVIE_DETAILS', fetchMovieDetails);
 }
 
 function* fetchAllMovies() {
@@ -32,7 +32,7 @@ function* fetchAllMovies() {
 }
 
 function* fetchGenres() {
-    // get all genres for each movie from the DB
+    // get all genres for the movie that was clicked on
     try {
         const genres = yield axios.get('/api/genre');
         console.log('get all:', genres.data);
@@ -47,9 +47,9 @@ function* fetchGenres() {
 function* fetchMovieDetails() {
     // get all details for movie that was clicked on
     try {
-        const movieDetails = yield axios.get('/api/details/:id');
+        const movieDetails = yield axios.get('/api/details/');
         console.log('get all:', movieDetails.data);
-        yield put({ type: 'SET_DETAILS', payload: movieDetails.data });
+        yield put({ type: 'SET_MOVIE_DETAILS', payload: movieDetails.data });
 
     } catch {
         console.log('get all error');
@@ -83,7 +83,7 @@ const genres = (state = [], action) => {
 // Used to store information of movie that was clicked on
 const movieDetail = (state = [], action) => {
     switch (action.type) {
-        case 'SET_DETAILS':
+        case 'SET_MOVIE_DETAILS':
             return action.payload;
         default:
             return state;

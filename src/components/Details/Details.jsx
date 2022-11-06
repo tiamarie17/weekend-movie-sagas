@@ -12,8 +12,8 @@ function Details({movie}){
     const genres = useSelector((store) =>{
         return store.genres;
     })
-    //getting movielist from the redux store
-    const movies = useSelector((store) =>{
+    //getting details from the redux store
+    const details = useSelector((store) =>{
         return store.movies;
     })
 
