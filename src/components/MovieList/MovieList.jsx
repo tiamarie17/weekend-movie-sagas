@@ -24,7 +24,7 @@ function MovieList() {
         console.log('movieId is', movie.id);
 
 
-        history.push(`/details/${movie.id}}`);
+        history.push(`/details/${movie.id}`);
 
     }
 

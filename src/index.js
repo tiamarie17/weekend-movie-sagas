@@ -43,6 +43,19 @@ function* fetchGenres() {
         
 }
 
+function* fetchMovieDetails() {
+    // get all details for movie that was clicked on
+    try {
+        const movieDetails = yield axios.get('/api/details/:id');
+        console.log('get all:', movieDetails.data);
+        yield put({ type: 'SET_DETAILS', payload: movieDetails.data });
+
+    } catch {
+        console.log('get all error');
+    }
+        
+}
+
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
 
@@ -66,11 +79,22 @@ const genres = (state = [], action) => {
     }
 }
 
+// Used to store information of movie that was clicked on
+const movieDetail = (state = [], action) => {
+    switch (action.type) {
+        case 'SET_DETAILS':
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
 // Create one store that all components can use
 const storeInstance = createStore(
     combineReducers({
         movies,
         genres,
+        movieDetail,
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),

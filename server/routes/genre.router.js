@@ -4,7 +4,6 @@ const pool = require('../modules/pool')
 
 router.get('/', (req, res) => {
   // Add query to get all genres
-  //Update to incldue just the list of genres?
   console.log('in genres router, req.body is', req.body);
 
   const sqlText = `
