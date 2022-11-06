@@ -7,16 +7,14 @@ function Details(){
 
     const history=useHistory();
 
-    const dispatch= useDispatch();
-
 
     //getting genres and movie clicked info from the redux store
     const genres = useSelector((store) =>{
         return store.genres;
     })
 
-    const movieClicked=useSelector((store) =>{
-        return store.movieClicked;
+    const storeMovieClicked= useSelector((store) =>{
+        return store.storeMovieClicked;
     })
  
 
@@ -30,9 +28,19 @@ function Details(){
 
     return(
     <>
-    <h1>Details go here!</h1>
-    <button onClick={goToHomepage}>Back to Movie List</button>
-    </>);
+        <button onClick={goToHomepage}>Back to Movie List</button>
+
+        <div className="movieDetail">
+
+            <h1>{storeMovieClicked.title}</h1>
+            <img src ={storeMovieClicked.poster}/>
+            <h1>{storeMovieClicked.description}</h1>
+
+
+        </div>
+
+    </>
+    );
 }
 
 export default Details;
