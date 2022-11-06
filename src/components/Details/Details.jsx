@@ -11,6 +11,10 @@ function Details(){
         return store.genres;
     })
 
+    const movies = useSelector((store) =>{
+        return store.movies;
+    })
+
 
     return(
     <>
