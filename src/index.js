@@ -72,7 +72,7 @@ const genres = (state = [], action) => {
 // Stores movies clicked info
 const storeMovieClicked = (state = [], action) => {
     switch (action.type) {
-        case 'SET_MOVIE_CLICKED':
+        case 'STORE_MOVIE_CLICKED':
             return action.payload;
         default:
             return state;
@@ -85,6 +85,7 @@ const storeInstance = createStore(
     combineReducers({
         movies,
         genres,
+        storeMovieClicked,
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),

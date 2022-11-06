@@ -8,9 +8,15 @@ function Details(){
     const history=useHistory();
 
     const dispatch= useDispatch();
-    //getting movie genres from the redux store
+
+
+    //getting genres and movie clicked info from the redux store
     const genres = useSelector((store) =>{
         return store.genres;
+    })
+
+    const movieClicked=useSelector((store) =>{
+        return store.movieClicked;
     })
  
 
