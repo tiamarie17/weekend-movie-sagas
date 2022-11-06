@@ -3,7 +3,7 @@ import React, { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import './Details.css';
 
-function Details({movie}){
+function Details(){
 
     const history=useHistory();
 
@@ -12,10 +12,7 @@ function Details({movie}){
     const genres = useSelector((store) =>{
         return store.genres;
     })
-    //getting details from the redux store
-    const details = useSelector((store) =>{
-        return store.movies;
-    })
+ 
 
     //back button onClick returns user to homepage
     const goToHomepage = () =>{

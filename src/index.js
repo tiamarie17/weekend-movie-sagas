@@ -15,8 +15,9 @@ import axios from 'axios';
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
     yield takeEvery('FETCH_GENRES', fetchGenres);
-    yield takeEvery('FETCH__MOVIE_DETAILS', fetchMovieDetails);
+    
 }
+
 
 function* fetchAllMovies() {
     // get all movies from the DB
@@ -26,36 +27,24 @@ function* fetchAllMovies() {
         yield put({ type: 'SET_MOVIES', payload: movies.data });
 
     } catch {
-        console.log('get all error');
+        console.log('get all movies error');
     }
         
 }
 
 function* fetchGenres() {
-    // get all genres for the movie that was clicked on
+    // get all genres for each movie clicked from DB
     try {
         const genres = yield axios.get('/api/genre');
-        console.log('get all:', genres.data);
-        yield put({ type: 'SET_GENRES', payload: genres.data });
+        console.log('get all:', movies.data);
+        yield put({ type: 'SET_MOVIES', payload: genres.data });
 
     } catch {
-        console.log('get all error');
+        console.log('get all movies error');
     }
         
 }
 
-function* fetchMovieDetails() {
-    // get all details for movie that was clicked on
-    try {
-        const movieDetails = yield axios.get('/api/details/');
-        console.log('get all:', movieDetails.data);
-        yield put({ type: 'SET_MOVIE_DETAILS', payload: movieDetails.data });
-
-    } catch {
-        console.log('get all error');
-    }
-        
-}
 
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
@@ -80,22 +69,22 @@ const genres = (state = [], action) => {
     }
 }
 
-// Used to store information of movie that was clicked on
-const movieDetail = (state = [], action) => {
+// Stores movies clicked info
+const storeMovieClicked = (state = [], action) => {
     switch (action.type) {
-        case 'SET_MOVIE_DETAILS':
+        case 'SET_MOVIE_CLICKED':
             return action.payload;
         default:
             return state;
     }
 }
 
+
 // Create one store that all components can use
 const storeInstance = createStore(
     combineReducers({
         movies,
         genres,
-        movieDetail,
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),

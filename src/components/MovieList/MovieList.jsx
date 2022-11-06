@@ -1,10 +1,14 @@
-import React, { useEffect} from 'react';
+import React, { useEffect, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './MovieList.css'
 import {useHistory} from 'react-router-dom';
 
 
 function MovieList() {
+
+    useEffect(() => {
+        dispatch({ type: 'FETCH_MOVIES' });
+    }, []);
 
     const dispatch = useDispatch();
     const history = useHistory();
@@ -13,22 +17,24 @@ function MovieList() {
     const movies = useSelector(store => store.movies);
 
 
-    useEffect(() => {
-        dispatch({ type: 'FETCH_MOVIES' });
-    }, []);
-
-    //image click handler function
+        //image click handler function
     const handlePosterClick = (movie) => {
-        console.log('movie is', movie);
-        console.log('in handlePosterClick');
-        console.log('movieId is', movie.id);
+            console.log('in handlePosterClick');
+            console.log('movie is', movie);
+            let id = movie.id;
+            
+            dispatch({
+                type: 'STORE_MOVIE_CLICKED',
+                payload: movie
+            })
+    
+    
+            //Go to details page of movie clicked
+            history.push(`/details/${id}`);
 
-
-        history.push(`/details/${movie.id}`);
-        dispatch({ type: 'FETCH__MOVIE_DETAILS' });
-
-
-    }
+            
+    
+        }
 
     return (
         <>

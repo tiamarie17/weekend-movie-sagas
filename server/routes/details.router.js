@@ -3,13 +3,12 @@ const router = express.Router();
 const pool = require('../modules/pool')
 
 router.get('/details/:id', (req, res) => {
-    // load the detail page for each item that was clicked on
+    // create router for details pages, practice setting up connection to database with SQL
     console.log('in details router, req.params is', req.params);
     console.log('req.params.id is', req.params.id);
-    console.log('req.body is ', req.body);
-    console.log('req.body.title is', req.body.title);
+   
 
-    let individualMovieId= req.params.id;
+    let clickedMovieId= req.params.id;
   
     const sqlText = `
     SELECT "movies"."id", "movies"."title", "movies"."description", "movies"."poster" 
@@ -19,13 +18,8 @@ router.get('/details/:id', (req, res) => {
       WHERE "movies"."id" = $1
       GROUP BY "movies"."id";`;
 
-    const sqlParams = {
-        id: individualMovieId,
-        title: req.body.title,
-        description: req.body.description,
-        poster: req.body.poster
-    }
-    pool.query(sqlText, sqlParams)
+
+    pool.query(sqlText, [clickedMovieId])
       .then( result => {
         res.send(result.rows);
       })
