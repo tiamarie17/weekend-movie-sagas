@@ -9,6 +9,8 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import Grid from '@material-ui/core/Grid'
+import { autocompleteClasses } from '@mui/material';
 
 function Details(){
 
@@ -32,15 +34,16 @@ function Details(){
         history.push('/');
     }
 
-
+  
     return(
     <>
-     <div className="card">
-      <Card sx={{ maxWidth: 500, maxHeight: 700}}>
+  
+      <Card sx={{ maxWidth: 500, maxHeight: 900}}>
       <CardMedia
         component="img"
         alt={storeMovieClicked.title}
-        height="140"
+        height="400"
+        width="400"
         img src={storeMovieClicked.poster}
       />
       <CardContent>
@@ -55,10 +58,10 @@ function Details(){
         <Button size="large" variant="contained" onClick={goToHomepage}>Back to Movie List</Button>
       </CardActions>
     </Card>
-    </div>
-        
+  
     </>
     );
+
 }
 
 export default Details;
