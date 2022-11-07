@@ -37,7 +37,7 @@ function* fetchGenres(action) {
     const id = action.payload;
 
     try {
-        const genres = yield axios.get('/api/genre/:id');
+        const genres = yield axios.get(`/api/genre/${id}`);
         console.log('get genres', genres.data);
         yield put({ type: 'SET_GENRES', payload: genres.data });
 

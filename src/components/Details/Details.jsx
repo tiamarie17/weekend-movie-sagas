@@ -8,7 +8,6 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import Box from '@material-ui/core/Box'
 
 function Details(){
 
@@ -37,7 +36,7 @@ function Details(){
     <>
     <div className= "card">
     <section>
-    
+
       <Card sx={{ maxWidth: 450, maxHeight: 800}}>
       
       <CardMedia
