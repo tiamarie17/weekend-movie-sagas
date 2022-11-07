@@ -18,7 +18,7 @@ router.get('/:id', (req, res) => {
     GROUP BY "movies"."id";`;
   pool.query(sqlText, [id])
     .then( result => {
-      res.send(result.rows);
+      res.send(result.rows[0]);
     })
     .catch(err => {
       console.log('ERROR: Get all genres', err);
