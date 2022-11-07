@@ -2,9 +2,12 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool')
 
-router.get('/', (req, res) => {
-  // Add query to get all genres
-  console.log('in genres router, req.body is', req.body);
+router.get('/:id', (req, res) => {
+  // Add query to get all genres for the movie clicked
+  console.log('in genres router, req.params.id is', req.params.id);
+
+  let id = req.params.id;
+
 
   const sqlText = `
   SELECT JSON_AGG("genres"."name") AS genres
@@ -13,7 +16,7 @@ router.get('/', (req, res) => {
     JOIN "genres" ON "movies_genres"."genre_id"="genres"."id"
     WHERE "movies"."id"=$1
     GROUP BY "movies"."id";`;
-  pool.query(sqlText)
+  pool.query(sqlText, [id])
     .then( result => {
       res.send(result.rows);
     })

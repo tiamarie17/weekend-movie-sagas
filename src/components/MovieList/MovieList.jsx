@@ -13,6 +13,8 @@ function MovieList() {
     const dispatch = useDispatch();
     const history = useHistory();
 
+    
+
     //getting movies from redux store
     const movies = useSelector(store => store.movies);
 
@@ -27,19 +29,20 @@ function MovieList() {
                 type: 'STORE_MOVIE_CLICKED',
                 payload: movie
             })
-    
+
+            dispatch({
+                type: 'FETCH_GENRES',
+                payload: movie.id
+            })
     
             //Go to details page of movie clicked
             history.push(`/details/${id}`);
-
-            
     
         }
 
     return (
         <>
         <main>
-            <h1>MovieList</h1>
             <section className="movies">
                 {movies.map(movie => {
                     return (
