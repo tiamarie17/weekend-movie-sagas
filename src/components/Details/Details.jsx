@@ -1,7 +1,6 @@
 
 import React, { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import './Details.css';
 // Importing Material UI tools
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -9,8 +8,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import Grid from '@material-ui/core/Grid'
-import { autocompleteClasses } from '@mui/material';
+import Box from '@material-ui/core/Box'
 
 function Details(){
 
@@ -37,14 +35,17 @@ function Details(){
   
     return(
     <>
-  
-      <Card sx={{ maxWidth: 500, maxHeight: 900}}>
+    <div className= "card">
+    <section>
+    
+      <Card sx={{ maxWidth: 450, maxHeight: 800}}>
+      
       <CardMedia
         component="img"
         alt={storeMovieClicked.title}
-        height="400"
-        width="400"
-        img src={storeMovieClicked.poster}
+        img id="moviePosterDetail" src={storeMovieClicked.poster} 
+        height='275'
+        width='195'
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
@@ -58,6 +59,8 @@ function Details(){
         <Button size="large" variant="contained" onClick={goToHomepage}>Back to Movie List</Button>
       </CardActions>
     </Card>
+    </section>
+    </div>
   
     </>
     );

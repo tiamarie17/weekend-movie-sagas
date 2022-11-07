@@ -3,12 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import './MovieList.css'
 import {useHistory} from 'react-router-dom';
 
-// importing material ui tools
-import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import Grid from '@mui/material/Grid';
-
 
 function MovieList() {
 

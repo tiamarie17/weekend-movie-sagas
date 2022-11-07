@@ -3,14 +3,17 @@
 .movies {
     display : flex;
     flex-wrap: wrap;
-    flex-grow: 1;
     margin: 10px;
     justify-content: center;
+    border-radius: 10px;
 }
 
 header {
     background-color: dimgray;
     color: white;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
 }
 
 

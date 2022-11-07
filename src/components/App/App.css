@@ -3,10 +3,6 @@
   text-align: center;
 }
 
-section{
-  background-color: #E5D1FA
-}
-
 .App-title {
   font-size: 1.5em;
 }
@@ -35,4 +31,14 @@ div {
   align-items: center;
   justify-content: center;
   margin: 0 auto;
+}
+
+body {
+  background-color: black;
+}
+
+#moviePosterDetail {
+  margin: 0 auto;
+  margin-top: 10px;
+ 
 }
